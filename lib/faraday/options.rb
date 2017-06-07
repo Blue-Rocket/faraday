@@ -51,14 +51,14 @@ module Faraday
     def merge(value)
       dup.update(value)
     end
-    
+
     # Public
     def dup
       self.class.from(self)
     end
 
     alias clone dup
-    
+
     # Public
     def fetch(key, *args)
       unless symbolized_key_set.include?(key.to_sym)
@@ -197,7 +197,7 @@ module Faraday
 
   class RequestOptions < Options.new(:params_encoder, :proxy, :bind,
     :timeout, :open_timeout, :boundary,
-    :oauth)
+    :oauth, :context)
 
     def []=(key, value)
       if key && key.to_sym == :proxy
